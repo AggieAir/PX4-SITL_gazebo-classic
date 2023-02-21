@@ -4,7 +4,23 @@
     <include>
       <uri>model://standard_vtol</uri>
     </include>
-    <!--Add on the IRlock sensor-->
+
+    <include>
+      <uri>model://lidar</uri>
+      <pose>-0.12 0 0 0 0 0</pose>
+    </include>
+    <joint name="lidar_joint" type="revolute">
+      <child>lidar::link</child>
+      <parent>standard_vtol::base_link</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <upper>0</upper>
+          <lower>0</lower>
+        </limit>
+      </axis>
+    </joint>
+
     <include>
       <uri>model://irlock</uri>
       <pose>-0 0 0 0 1.5708 0</pose>
@@ -20,5 +36,6 @@
         </limit>
       </axis>
     </joint>
+
   </model>
 </sdf>
